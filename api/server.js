@@ -21,6 +21,8 @@ const ELECTRICITY_RATE = 0.57;
 const DEFAULT_DEVICE_ID = "device1";
 
 const MQTT_BROKER = process.env.MQTT_BROKER || "mqtt://localhost:1883";
+const MQTT_USERNAME = process.env.MQTT_USERNAME || "";
+const MQTT_PASSWORD = process.env.MQTT_PASSWORD || "";
 
 const MQTT_DATA_TOPIC = "smartsocket/+/data";
 
@@ -358,7 +360,11 @@ async function getHistoryRows(deviceId = DEFAULT_DEVICE_ID) {
 
 const mqttClient =
     mqtt.connect(
-        MQTT_BROKER
+        MQTT_BROKER,
+        {
+            username: MQTT_USERNAME,
+            password: MQTT_PASSWORD
+        }
     );
 
 
