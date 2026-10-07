@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Energy Control Monitor</string>
+    <string name="title_activity_main">Energy Control Monitor</string>
+    <string name="package_name">com.energycontrol.monitor</string>
+    <string name="custom_url_scheme">com.energycontrol.monitor</string>
+</resources>

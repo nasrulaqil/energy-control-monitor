@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Add ESP32 - Smart Energy Monitor</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="login-page">
+<main class="auth-shell">
+<section class="auth-card setup-card">
+  <div class="auth-brand"><div class="auth-logo"><i class="bi bi-bluetooth"></i></div><span>Smart Energy Monitor</span></div>
+  <div class="auth-heading"><h1>Add your ESP32</h1><p>Pair a nearby Smart Energy device with Bluetooth, then send your WiFi details securely to the ESP32.</p></div>
+
+  <div class="setup-status" id="espStatus"><span class="setup-dot"></span><span id="statusText">Ready to search for a nearby ESP32.</span></div>
+
+  <button class="auth-primary-btn" id="scanBleBtn" type="button"><span>Find Nearby ESP32</span><i class="bi bi-bluetooth"></i></button>
+
+  <div id="bleDeviceBox" class="device-result ble-device-result" hidden>
+    <i class="bi bi-cpu-fill"></i><div><small>Nearby device</small><strong id="bleDeviceId">--</strong></div>
+  </div>
+
+  <form id="espProvisionForm" hidden>
+    <label class="auth-input" for="wifiSsid"><i class="bi bi-wifi"></i><input id="wifiSsid" autocomplete="off" placeholder="Home WiFi name (SSID)" required></label>
+    <label class="auth-input" for="wifiPassword"><i class="bi bi-lock-fill"></i><input id="wifiPassword" type="password" autocomplete="new-password" placeholder="WiFi password"><button class="auth-eye" id="toggleWifiPassword" type="button" aria-label="Show WiFi password"><i class="bi bi-eye-slash"></i></button></label>
+    <div id="setupMessage" class="auth-message" hidden></div>
+    <button class="auth-primary-btn" id="setupEspBtn" type="submit"><span>Connect ESP32 to WiFi</span><i class="bi bi-wifi"></i></button>
+  </form>
+
+  <div id="deviceResult" class="device-result" hidden>
+    <i class="bi bi-check-circle-fill"></i><div><small>Device connected</small><strong id="connectedDeviceId">--</strong></div>
+  </div>
+  <button class="auth-primary-btn" id="openDashboardBtn" type="button" hidden><span>Open Dashboard</span><i class="bi bi-arrow-right"></i></button>
+
+  <p class="auth-note setup-note"><i class="bi bi-shield-check"></i> No MQTT IP or Device ID is entered manually. The app reads the Device ID from the ESP32 and only asks for your WiFi credentials.</p>
+  <button class="setup-logout" id="setupLogout" type="button">Sign out</button>
+</section>
+<p class="auth-footer">Smart Energy Monitor © 2026</p>
+</main>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
+<script src="../js/firebase-config.js"></script>
+<script src="../js/native-ble.js"></script>
+<script src="../js/setup-device.js"></script>
+</body>
+</html>

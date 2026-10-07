@@ -1,0 +1,12 @@
+{
+  "appId": "com.energycontrol.monitor",
+  "appName": "Energy Control Monitor",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https",
+    "cleartext": true
+  },
+  "android": {
+    "allowMixedContent": true
+  }
+}

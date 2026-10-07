@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+    <title>
+        Schedule - Smart Energy Monitor
+    </title>
+
+
+    <!-- Bootstrap -->
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+
+    <!-- Bootstrap Icons -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
+
+    <!-- Our CSS -->
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="container-fluid">
+
+    <div class="row">
+
+
+        <!-- ================= SIDEBAR ================= -->
+
+        <div class="col-lg-3 col-xl-2">
+
+            <div class="card shadow sidebar">
+
+                <div class="card-body">
+
+                    <h3 class="text-primary">
+
+                        <i class="bi bi-lightning-charge-fill"></i>
+
+                        Smart Energy
+
+                    </h3>
+
+                    <hr>
+
+
+                    <a
+                        class="btn btn-light w-100 mb-2"
+                        href="dashboard.html"
+                    >
+
+                        <i class="bi bi-house-door-fill"></i>
+
+                        Dashboard
+
+                    </a>
+
+
+                    <a
+                        class="btn btn-light w-100 mb-2"
+                        href="analytics.html"
+                    >
+
+                        <i class="bi bi-graph-up"></i>
+
+                        Analytics
+
+                    </a>
+
+
+                    <a
+                        class="btn btn-light w-100 mb-2"
+                        href="history.html"
+                    >
+
+                        <i class="bi bi-clock-history"></i>
+
+                        History
+
+                    </a>
+
+
+                    <a
+                        class="btn btn-primary w-100 mb-2"
+                        href="schedule.html"
+                    >
+
+                        <i class="bi bi-calendar-event"></i>
+
+                        Schedule
+
+                    </a>
+
+
+                    <a
+                        class="btn btn-light w-100 mb-2"
+                        href="settings.html"
+                    >
+
+                        <i class="bi bi-gear-fill"></i>
+
+                        Settings
+
+                    </a>
+
+
+                    <button
+                        id="themeToggle"
+                        class="btn btn-light w-100 mb-2"
+                    >
+
+                        <i
+                            id="themeIcon"
+                            class="bi bi-moon-fill"
+                        ></i>
+
+                        <span id="themeText">
+                            Dark Mode
+                        </span>
+
+                    </button>
+
+
+                    <a
+                        class="btn btn-danger w-100"
+                        href="#"
+                    >
+
+                        <i class="bi bi-box-arrow-right"></i>
+
+                        Logout
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= MAIN CONTENT ================= -->
+
+        <div class="col-lg-9 col-xl-10">
+
+
+            <!-- HEADER -->
+
+            <div class="card shadow-sm mt-3 mb-4">
+
+                <div class="card-body">
+
+                    <div class="row">
+
+                        <div class="col-md-8">
+
+                            <h2 class="text-primary">
+
+                                <i class="bi bi-calendar-event"></i>
+
+                                Device Schedule
+
+                            </h2>
+
+                            <p class="text-muted mb-0">
+
+                                Automatically control your
+                                smart extension.
+
+                            </p>
+
+                        </div>
+
+
+                        <div class="col-md-4 text-md-end">
+
+                            <span class="badge bg-primary">
+
+                                LIVE DATA
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= CREATE SCHEDULE ================= -->
+
+            <div class="card shadow-sm mb-4">
+
+                <div class="card-body">
+
+                    <h4 class="mb-4">
+
+                        <i class="bi bi-plus-circle"></i>
+
+                        Create Schedule
+
+                    </h4>
+
+
+                    <div class="row g-3">
+
+
+                        <!-- DEVICE -->
+
+                        <div class="col-md-6">
+
+                            <label
+                                for="deviceSelect"
+                                class="form-label"
+                            >
+
+                                Device
+
+                            </label>
+
+                            <select id="deviceSelect" class="form-select"><option value="R1">Relay 1</option><option value="R2">Relay 2</option><option value="R3">Relay 3</option></select>
+
+                        </div>
+
+
+                        <!-- ACTION -->
+
+                        <div class="col-md-6">
+
+                            <label
+                                for="actionSelect"
+                                class="form-label"
+                            >
+
+                                Action
+
+                            </label>
+
+                            <select
+                                id="actionSelect"
+                                class="form-select"
+                            >
+
+                                <option value="ON">
+
+                                    Turn ON
+
+                                </option>
+
+                                <option value="OFF">
+
+                                    Turn OFF
+
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- TIME -->
+
+                        <div class="col-md-6">
+
+                            <label
+                                for="scheduleTime"
+                                class="form-label"
+                            >
+
+                                Time
+
+                            </label>
+
+                            <input
+                                type="time"
+                                id="scheduleTime"
+                                class="form-control"
+                            >
+
+                        </div>
+
+
+                        <!-- DAYS -->
+
+                        <div class="col-md-6">
+
+                            <label class="form-label">
+
+                                Repeat Days
+
+                            </label>
+
+
+                            <div class="d-flex flex-wrap gap-2">
+
+
+                                <input
+                                    type="checkbox"
+                                    class="btn-check day-check"
+                                    id="mon"
+                                    value="Mon"
+                                >
+
+                                <label
+                                    class="btn btn-outline-success"
+                                    for="mon"
+                                >
+                                    Mon
+                                </label>
+
+
+                                <input
+                                    type="checkbox"
+                                    class="btn-check day-check"
+                                    id="tue"
+                                    value="Tue"
+                                >
+
+                                <label
+                                    class="btn btn-outline-success"
+                                    for="tue"
+                                >
+                                    Tue
+                                </label>
+
+
+                                <input
+                                    type="checkbox"
+                                    class="btn-check day-check"
+                                    id="wed"
+                                    value="Wed"
+                                >
+
+                                <label
+                                    class="btn btn-outline-success"
+                                    for="wed"
+                                >
+                                    Wed
+                                </label>
+
+
+                                <input
+                                    type="checkbox"
+                                    class="btn-check day-check"
+                                    id="thu"
+                                    value="Thu"
+                                >
+
+                                <label
+                                    class="btn btn-outline-success"
+                                    for="thu"
+                                >
+                                    Thu
+                                </label>
+
+
+                                <input
+                                    type="checkbox"
+                                    class="btn-check day-check"
+                                    id="fri"
+                                    value="Fri"
+                                >
+
+                                <label
+                                    class="btn btn-outline-success"
+                                    for="fri"
+                                >
+                                    Fri
+                                </label>
+
+
+                                <input
+                                    type="checkbox"
+                                    class="btn-check day-check"
+                                    id="sat"
+                                    value="Sat"
+                                >
+
+                                <label
+                                    class="btn btn-outline-success"
+                                    for="sat"
+                                >
+                                    Sat
+                                </label>
+
+
+                                <input
+                                    type="checkbox"
+                                    class="btn-check day-check"
+                                    id="sun"
+                                    value="Sun"
+                                >
+
+                                <label
+                                    class="btn btn-outline-success"
+                                    for="sun"
+                                >
+                                    Sun
+                                </label>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- SAVE -->
+
+                        <div class="col-12">
+
+                            <button
+                                id="saveSchedule"
+                                class="btn btn-primary"
+                            >
+
+                                <i class="bi bi-check-circle"></i>
+
+                                Save Schedule
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= SAVED SCHEDULES ================= -->
+
+            <div class="card shadow-sm">
+
+                <div class="card-body">
+
+
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+
+                        <h4 class="mb-0">
+
+                            <i class="bi bi-list-check"></i>
+
+                            Saved Schedules
+
+                        </h4>
+
+
+                        <span
+                            id="scheduleCount"
+                            class="badge bg-primary"
+                        >
+
+                            0 Schedules
+
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        id="scheduleList"
+                        class="row g-3"
+                    >
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+            <!-- FOOTER -->
+
+            <footer class="dashboard-footer">
+
+                <div class="row align-items-center">
+
+                    <div class="col-md-6">
+
+                        <h5 class="text-primary mb-1">
+
+                            <i class="bi bi-lightning-charge-fill"></i>
+
+                            Smart Energy Monitor
+
+                        </h5>
+
+                        <p class="text-muted mb-0">
+
+                            ESP32 Smart Extension
+                            Energy Monitoring System
+
+                        </p>
+
+                    </div>
+
+
+                    <div
+                        class="col-md-6 text-md-end mt-3 mt-md-0"
+                    >
+
+                        <p class="mb-1">
+
+                            --
+
+                        </p>
+
+                        <p class="text-muted mb-0">
+
+                            © 2026 Smart Energy Monitor
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </footer>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
+<script src="../js/firebase-config.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/schedule.js"></script>
+<script src="../js/theme.js"></script>
+
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+></script>
+
+
+</body>
+
+</html>

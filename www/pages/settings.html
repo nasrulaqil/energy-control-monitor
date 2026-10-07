@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+    <title>
+        Settings - Smart Energy Monitor
+    </title>
+
+
+    <!-- Bootstrap -->
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+
+    <!-- Bootstrap Icons -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
+
+    <!-- Our CSS -->
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="container-fluid">
+
+    <div class="row">
+
+
+        <!-- ================= SIDEBAR ================= -->
+
+        <div class="col-lg-3 col-xl-2">
+
+            <div class="card shadow sidebar">
+
+                <div class="card-body">
+
+                    <h3 class="text-primary">
+
+                        <i class="bi bi-lightning-charge-fill"></i>
+
+                        Smart Energy
+
+                    </h3>
+
+                    <hr>
+
+
+                    <a
+                        class="btn btn-light w-100 mb-2"
+                        href="dashboard.html"
+                    >
+
+                        <i class="bi bi-house-door-fill"></i>
+
+                        Dashboard
+
+                    </a>
+
+
+                    <a
+                        class="btn btn-light w-100 mb-2"
+                        href="analytics.html"
+                    >
+
+                        <i class="bi bi-graph-up"></i>
+
+                        Analytics
+
+                    </a>
+
+
+                    <a
+                        class="btn btn-light w-100 mb-2"
+                        href="history.html"
+                    >
+
+                        <i class="bi bi-clock-history"></i>
+
+                        History
+
+                    </a>
+
+
+                    <a
+                        class="btn btn-light w-100 mb-2"
+                        href="schedule.html"
+                    >
+
+                        <i class="bi bi-calendar-event"></i>
+
+                        Schedule
+
+                    </a>
+
+
+                    <a
+                        class="btn btn-primary w-100 mb-2"
+                        href="settings.html"
+                    >
+
+                        <i class="bi bi-gear-fill"></i>
+
+                        Settings
+
+                    </a>
+
+
+                    <button
+                        id="themeToggle"
+                        class="btn btn-light w-100 mb-2"
+                    >
+
+                        <i
+                            id="themeIcon"
+                            class="bi bi-moon-fill"
+                        ></i>
+
+                        <span id="themeText">
+
+                            Dark Mode
+
+                        </span>
+
+                    </button>
+
+
+                    <a
+                        class="btn btn-danger w-100"
+                        href="#"
+                    >
+
+                        <i class="bi bi-box-arrow-right"></i>
+
+                        Logout
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= MAIN CONTENT ================= -->
+
+        <div class="col-lg-9 col-xl-10">
+
+
+            <!-- HEADER -->
+
+            <div class="card shadow-sm mt-3 mb-4">
+
+                <div class="card-body">
+
+                    <div class="row">
+
+                        <div class="col-md-8">
+
+                            <h2 class="text-primary">
+
+                                <i class="bi bi-gear-fill"></i>
+
+                                Settings
+
+                            </h2>
+
+                            <p class="text-muted mb-0">
+
+                                Configure your Smart Energy
+                                Monitor.
+
+                            </p>
+
+                        </div>
+
+
+                        <div class="col-md-4 text-md-end">
+
+                            <span class="badge bg-primary">
+
+                                SYSTEM READY
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= DEVICE SETTINGS ================= -->
+
+            <div class="card shadow-sm mb-4">
+
+                <div class="card-body">
+
+                    <h4 class="mb-4">
+
+                        <i class="bi bi-plug-fill"></i>
+
+                        Device Settings
+
+                    </h4>
+
+
+                    <div class="row g-3">
+
+
+                        <!-- DEVICE NAME -->
+
+                        <div class="col-md-6">
+
+                            <label
+                                for="deviceName"
+                                class="form-label"
+                            >
+
+                                Device Name
+
+                            </label>
+
+                            <input
+                                type="text"
+                                id="deviceName"
+                                class="form-control"
+                                placeholder="Smart Extension 01"
+                            >
+
+                            <div class="form-text">
+
+                                Name displayed throughout
+                                the website.
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- DEVICE ID -->
+
+                        <div class="col-md-6">
+
+                            <label
+                                for="deviceId"
+                                class="form-label"
+                            >
+
+                                Device ID
+
+                            </label>
+
+                            <input
+                                type="text"
+                                id="deviceId"
+                                class="form-control"
+                                value="ESP32-001"
+                            >
+
+                            <div class="form-text">
+
+                                Unique identifier for the
+                                ESP32 device.
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= ELECTRICITY SETTINGS ================= -->
+
+            <div class="card shadow-sm mb-4">
+
+                <div class="card-body">
+
+                    <h4 class="mb-4">
+
+                        <i class="bi bi-cash-coin"></i>
+
+                        Electricity Settings
+
+                    </h4>
+
+
+                    <div class="row g-3">
+
+
+                        <!-- ELECTRICITY RATE -->
+
+                        <div class="col-md-6">
+
+                            <label
+                                for="electricityRate"
+                                class="form-label"
+                            >
+
+                                Electricity Rate
+
+                            </label>
+
+
+                            <div class="input-group">
+
+                                <span class="input-group-text">
+                                    RM
+                                </span>
+
+                                <input
+                                    type="number"
+                                    id="electricityRate"
+                                    class="form-control"
+                                    value="0.57"
+                                    step="0.01"
+                                    min="0"
+                                >
+
+                                <span class="input-group-text">
+                                    / kWh
+                                </span>
+
+                            </div>
+
+
+                            <div class="form-text">
+
+                                Used to estimate electricity
+                                cost.
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- MONTHLY LIMIT -->
+
+                        <div class="col-md-6">
+
+                            <label
+                                for="monthlyLimit"
+                                class="form-label"
+                            >
+
+                                Monthly Usage Limit
+
+                            </label>
+
+
+                            <div class="input-group">
+
+                                <input
+                                    type="number"
+                                    id="monthlyLimit"
+                                    class="form-control"
+                                    value="100"
+                                    step="1"
+                                    min="0"
+                                >
+
+                                <span class="input-group-text">
+                                    kWh
+                                </span>
+
+                            </div>
+
+
+                            <div class="form-text">
+
+                                Warning threshold for
+                                monthly usage.
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= NOTIFICATION SETTINGS ================= -->
+
+            <div class="card shadow-sm mb-4">
+
+                <div class="card-body">
+
+                    <h4 class="mb-4">
+
+                        <i class="bi bi-bell-fill"></i>
+
+                        Notifications
+
+                    </h4>
+
+
+                    <!-- HIGH USAGE -->
+
+                    <div class="form-check form-switch mb-3">
+
+                        <input
+                            class="form-check-input"
+                            type="checkbox"
+                            id="highUsageAlert"
+                            checked
+                        >
+
+                        <label
+                            class="form-check-label"
+                            for="highUsageAlert"
+                        >
+
+                            High Energy Usage Alert
+
+                        </label>
+
+                    </div>
+
+
+                    <p class="text-muted">
+
+                        Notify the user when electricity
+                        consumption reaches the configured
+                        limit.
+
+                    </p>
+
+
+                    <!-- DEVICE OFFLINE -->
+
+                    <div class="form-check form-switch">
+
+                        <input
+                            class="form-check-input"
+                            type="checkbox"
+                            id="offlineAlert"
+                            checked
+                        >
+
+                        <label
+                            class="form-check-label"
+                            for="offlineAlert"
+                        >
+
+                            Device Offline Alert
+
+                        </label>
+
+                    </div>
+
+
+                    <p class="text-muted">
+
+                        Notify the user when the ESP32
+                        loses connection.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= MQTT SETTINGS ================= -->
+
+            <div class="card shadow-sm mb-4">
+
+                <div class="card-body">
+
+                    <h4 class="mb-4">
+
+                        <i class="bi bi-broadcast-pin"></i>
+
+                        MQTT Connection
+
+                    </h4>
+
+
+                    <div class="row g-3">
+
+
+                        <!-- BROKER -->
+
+                        <div class="col-md-6">
+
+                            <label
+                                for="mqttBroker"
+                                class="form-label"
+                            >
+
+                                MQTT Broker
+
+                            </label>
+
+                            <input
+                                type="text"
+                                id="mqttBroker"
+                                class="form-control"
+                                value="localhost"
+                            >
+
+                        </div>
+
+
+                        <!-- PORT -->
+
+                        <div class="col-md-6">
+
+                            <label
+                                for="mqttPort"
+                                class="form-label"
+                            >
+
+                                MQTT WebSocket Port
+
+                            </label>
+
+                            <input
+                                type="number"
+                                id="mqttPort"
+                                class="form-control"
+                                value="9001"
+                            >
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="mt-3">
+
+                        <span
+                            id="mqttStatus"
+                            class="badge bg-secondary"
+                        >
+
+                            NOT CONNECTED
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= SAVE BUTTON ================= -->
+
+            <div class="card shadow-sm mb-4">
+
+                <div class="card-body">
+
+                    <button
+                        id="saveSettings"
+                        class="btn btn-primary me-2"
+                    >
+
+                        <i class="bi bi-save"></i>
+
+                        Save Settings
+
+                    </button>
+
+
+                    <button
+                        id="resetSettings"
+                        class="btn btn-outline-danger"
+                    >
+
+                        <i class="bi bi-arrow-counterclockwise"></i>
+
+                        Reset
+
+                    </button>
+
+
+                    <span
+                        id="saveMessage"
+                        class="text-primary ms-3"
+                    ></span>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= FOOTER ================= -->
+
+            <footer class="dashboard-footer">
+
+                <div class="row align-items-center">
+
+                    <div class="col-md-6">
+
+                        <h5 class="text-primary mb-1">
+
+                            <i class="bi bi-lightning-charge-fill"></i>
+
+                            Smart Energy Monitor
+
+                        </h5>
+
+                        <p class="text-muted mb-0">
+
+                            ESP32 Smart Extension
+                            Energy Monitoring System
+
+                        </p>
+
+                    </div>
+
+
+                    <div
+                        class="col-md-6 text-md-end mt-3 mt-md-0"
+                    >
+
+                        <p class="mb-1">
+
+                            --
+
+                        </p>
+
+                        <p class="text-muted mb-0">
+
+                            © 2026 Smart Energy Monitor
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </footer>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="card shadow-sm mb-4" id="userManagementCard">
+ <div class="card-body">
+  <h4 class="mb-2"><i class="bi bi-people-fill text-primary"></i> User Access</h4>
+  <p class="text-muted">Add a user who can log in and control the same 3 relays.</p>
+  <form id="addUserForm" class="row g-3">
+   <div class="col-md-4"><label class="form-label">Name</label><input id="newUserName" class="form-control" required maxlength="60"></div>
+   <div class="col-md-4"><label class="form-label">Email</label><input id="newUserEmail" type="email" class="form-control" required></div>
+   <div class="col-md-4"><label class="form-label">Temporary Password</label><input id="newUserPassword" type="password" minlength="6" class="form-control" required></div>
+   <div class="col-12"><button class="btn btn-primary" type="submit"><i class="bi bi-person-plus"></i> Add User</button><span id="userMessage" class="ms-3"></span></div>
+  </form>
+  <hr><div id="userList" class="small text-muted">Loading users...</div>
+ </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
+<script src="../js/firebase-config.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/settings.js"></script>
+<script src="../js/users.js"></script>
+<script src="../js/theme.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+
+</body>
+
+</html>

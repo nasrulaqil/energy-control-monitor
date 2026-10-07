@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login - Smart Energy Monitor</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="login-page">
+  <main class="auth-shell">
+    <section class="auth-card" id="loginPanel">
+      <div class="auth-brand">
+        <div class="auth-logo"><i class="bi bi-lightning-charge-fill"></i></div>
+        <span>Smart Energy Monitor</span>
+      </div>
+
+      <div class="auth-heading">
+        <h1>Log in</h1>
+        <p>Enter your email and password to securely access your energy control dashboard.</p>
+      </div>
+
+      <form id="loginForm" novalidate>
+        <label class="auth-input" for="username">
+          <i class="bi bi-envelope-fill"></i>
+          <input type="email" id="username" autocomplete="email" placeholder="Email address" required>
+        </label>
+
+        <label class="auth-input" for="password">
+          <i class="bi bi-lock-fill"></i>
+          <input type="password" id="password" autocomplete="current-password" placeholder="Password" required>
+          <button type="button" class="password-toggle" id="showPassword" aria-label="Show password">
+            <i id="passwordIcon" class="bi bi-eye-slash"></i>
+          </button>
+        </label>
+
+        <div class="auth-options">
+          <label class="remember-label"><input type="checkbox" id="rememberMe"> <span>Remember me</span></label>
+          <button type="button" class="auth-text-btn" id="forgotPasswordBtn">Forgot Password?</button>
+        </div>
+
+        <div id="loginMessage" class="auth-message auth-error" hidden></div>
+        <button type="submit" class="auth-primary-btn" id="loginButton">
+          <span>Login</span><i class="bi bi-arrow-right"></i>
+        </button>
+      </form>
+
+      <p class="auth-switch">Don't have an account? <button type="button" class="auth-text-btn" id="openSignupBtn">Sign Up</button></p>
+
+      <div class="auth-divider"><span></span><small>SECURE ACCESS</small><span></span></div>
+      <p class="auth-note"><i class="bi bi-shield-check"></i> Accounts are managed by the system administrator.</p>
+    </section>
+
+
+    <section class="auth-card" id="signupPanel" hidden>
+      <button type="button" class="auth-back" id="backFromSignup" aria-label="Back to login"><i class="bi bi-chevron-left"></i></button>
+      <div class="auth-brand compact">
+        <div class="auth-logo"><i class="bi bi-lightning-charge-fill"></i></div>
+        <span>Smart Energy Monitor</span>
+      </div>
+      <div class="auth-heading">
+        <h1>Create Account</h1>
+        <p>Fill in your details to create an account and access the energy control dashboard.</p>
+      </div>
+      <form id="signupForm" novalidate>
+        <label class="auth-input" for="signupName"><i class="bi bi-person-fill"></i><input type="text" id="signupName" autocomplete="name" placeholder="Name" required></label>
+        <label class="auth-input" for="signupEmail"><i class="bi bi-envelope-fill"></i><input type="email" id="signupEmail" autocomplete="email" placeholder="Email address" required></label>
+        <label class="auth-input" for="signupPassword"><i class="bi bi-lock-fill"></i><input type="password" id="signupPassword" autocomplete="new-password" placeholder="Password (minimum 6 characters)" required></label>
+        <label class="auth-input" for="signupConfirmPassword"><i class="bi bi-lock-fill"></i><input type="password" id="signupConfirmPassword" autocomplete="new-password" placeholder="Confirm Password" required></label>
+        <div id="signupMessage" class="auth-message auth-error" hidden></div>
+        <button type="submit" class="auth-primary-btn" id="signupButton"><span>Create Account</span><i class="bi bi-person-plus-fill"></i></button>
+      </form>
+      <p class="auth-switch">Already have an account? <button type="button" class="auth-text-btn" id="signupToLogin">Login</button></p>
+    </section>
+
+    <section class="auth-card" id="forgotPanel" hidden>
+      <button type="button" class="auth-back" id="backToLogin" aria-label="Back to login"><i class="bi bi-chevron-left"></i></button>
+      <div class="auth-brand compact">
+        <div class="auth-logo"><i class="bi bi-lightning-charge-fill"></i></div>
+        <span>Smart Energy Monitor</span>
+      </div>
+      <div class="auth-heading">
+        <h1>Forgot Password</h1>
+        <p>Enter your email address and Firebase will send a password reset link to your account.</p>
+      </div>
+      <form id="forgotForm" novalidate>
+        <label class="auth-input" for="resetEmail">
+          <i class="bi bi-envelope-fill"></i>
+          <input type="email" id="resetEmail" autocomplete="email" placeholder="Email address" required>
+        </label>
+        <div id="resetMessage" class="auth-message" hidden></div>
+        <button type="submit" class="auth-primary-btn" id="resetButton">
+          <span>Continue</span><i class="bi bi-send-fill"></i>
+        </button>
+      </form>
+    </section>
+
+    <p class="auth-footer">Smart Energy Monitor © 2026</p>
+  </main>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>
