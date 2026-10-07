@@ -20,7 +20,7 @@ const ELECTRICITY_RATE = 0.57;
 
 const DEFAULT_DEVICE_ID = "device1";
 
-const MQTT_BROKER = "mqtt://localhost:1883";
+const MQTT_BROKER = process.env.MQTT_BROKER || "mqtt://localhost:1883";
 
 const MQTT_DATA_TOPIC = "smartsocket/+/data";
 
@@ -30,14 +30,20 @@ const MQTT_DATA_TOPIC = "smartsocket/+/data";
 // FIREBASE ADMIN
 // =====================================================
 
-const serviceAccount = require(
-    path.join(__dirname, "serviceAccountKey.json")
-);
+let serviceAccount;
+
+if (process.env.FIREBASE_SERVICE_ACCOUNT) {
+    serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
+} else {
+    serviceAccount = require(
+        path.join(__dirname, "serviceAccountKey.json")
+    );
+}
 
 initializeApp({
     credential: cert(serviceAccount),
-
     databaseURL:
+        process.env.FIREBASE_DATABASE_URL ||
         "https://energy-control-monitor-default-rtdb.asia-southeast1.firebasedatabase.app"
 });
 
@@ -1742,8 +1748,7 @@ app.get(
 // START SERVER
 // =====================================================
 
-const PORT =
-    3000;
+const PORT = process.env.PORT || 3000;
 
 
 app.listen(
