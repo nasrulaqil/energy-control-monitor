@@ -1633,6 +1633,26 @@ app.post("/api/relay/:relay/:action", requireUser, async (req,res) => {
     });
 });
 
+// Delete history only for the ESP32 linked to the authenticated account.
+app.delete("/api/energy/history", requireUser, async (req, res) => {
+    try {
+        const profile = await getOrCreateProfile(req.user);
+        const deviceId = safeDeviceId(req.query.device_id);
+        if (!deviceId || deviceId !== safeDeviceId(profile.device_id)) {
+            return res.status(403).json({status:"ERROR", message:"Device is not linked to this account"});
+        }
+        const owner = await db.ref(`devices/${deviceId}/owner_uid`).once("value");
+        if (!owner.exists() || owner.val() !== req.user.uid) {
+            return res.status(403).json({status:"ERROR", message:"Only the paired device owner can delete its history"});
+        }
+        await db.ref(`devices/${deviceId}/history`).remove();
+        return res.json({status:"OK", message:"History permanently deleted", device_id:deviceId});
+    } catch (error) {
+        console.error("DELETE HISTORY ERROR:", error);
+        return res.status(500).json({status:"ERROR", message:"Unable to delete history"});
+    }
+});
+
 app.get("/api/auth/profile", requireUser, async (req,res) => {
     try { res.json({status:"OK", data: await getOrCreateProfile(req.user)}); }
     catch(error){ res.status(500).json({status:"ERROR", message:error.message}); }
